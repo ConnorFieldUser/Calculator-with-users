@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="" action="" method="post">
+{% csrf_token %}
+<div class="row">
+  <div class="col-md-4">
+    <textarea name="num1" rows="2" class="form-control"></textarea>
+  </div>
+  <div class="col-md-2">
+    <select name="operator">
+      <option value="+">plus</option>
+      <option value="-">minus</option>
+      <option value="*">times</option>
+      <option value="/">divided by</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <textarea name="num2" rows="2" class="form-control"></textarea>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-default" type="submit">Compute</button>
+  </div>
+</div>
+<p>
+  <textarea name="description" rows="2" class="form-control"></textarea>
+</p>
+</form>
+</div>
+{{ object.last.result }}
+{% endblock %}

@@ -34,4 +34,9 @@ class UserCreateView(CreateView):
 class CalcCreateView(CreateView):
     model = Calc
     success_url = "/"
-    fields = ("num1", "")
+    fields = ("num1", "num2", "operator", "description")
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.created_by = self.request.user
+        return super().form_valid(form)

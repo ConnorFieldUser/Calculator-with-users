@@ -8,14 +8,34 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 
+POSSIBLE_OPS = [
+    ('+', '+'),
+    ('-', '-'),
+    ('*', '*'),
+    ('/', '/'),
+]
+
+
 class Calc(models.Model):
     created_by = models.ForeignKey('auth.User')
     created = models.DateTimeField(auto_now_add=True)
     num1 = models.IntegerField()
     num2 = models.IntegerField()
-    operation = models.CharField(max_length=1)
-    result = models.IntegerField()
+    operator = models.CharField(max_length=1)
     description = models.TextField(null=True, blank=True)
+
+    @property
+    def do_the_math(self):
+        operator, num1, num2 = [self.operator, self.num1, self.num2]
+        if operator == '+':
+            return num1 + num2
+        elif operator == '-':
+            return num1 - num2
+        elif operator == '*':
+            return num1 * num2
+        else:
+            return num1 / num2
+
 
 ACCESS_LEVELS = [
     ('u', 'user'),
