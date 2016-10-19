@@ -11,11 +11,14 @@ from django.db.models.signals import post_save
 class Calc(models.Model):
     created_by = models.ForeignKey('auth.User')
     created = models.DateTimeField(auto_now_add=True)
-    calculation = models.CharField(max_length=500)
+    num1 = models.IntegerField()
+    num2 = models.IntegerField()
+    operation = models.CharField(max_length=1)
+    result = models.IntegerField()
     description = models.TextField(null=True, blank=True)
 
 ACCESS_LEVELS = [
-    ('e', 'Employee'),
+    ('u', 'user'),
     ('o', 'Owner'),
 ]
 
