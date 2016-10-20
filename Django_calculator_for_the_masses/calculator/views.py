@@ -4,7 +4,7 @@ from django.views.generic import ListView, TemplateView, DetailView
 
 from django.views.generic.edit import CreateView
 
-from calculator.models import Calc, Profile
+from calculator.models import Operation, Profile
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -16,9 +16,9 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
-class CalcView(ListView):
-    template_name = 'calcs.html'
-    model = Calc
+class OperationView(ListView):
+    template_name = 'operations.html'
+    model = Operation
 
 
 class ProfileDetailView(DetailView):
@@ -31,8 +31,8 @@ class UserCreateView(CreateView):
     success_url = "/"
 
 
-class CalcCreateView(CreateView):
-    model = Calc
+class OperationCreateView(CreateView):
+    model = Operation
     success_url = "/"
     fields = ("num1", "num2", "operator", "description")
 

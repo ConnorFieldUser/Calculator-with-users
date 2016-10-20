@@ -16,13 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 # Why don't you like the imports lined up?
-from calculator.views import UserCreateView, CalcView, CalcCreateView, ProfileDetailView
+from calculator.views import UserCreateView, OperationView, OperationCreateView, ProfileDetailView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
-    url(r'^$', CalcCreateView.as_view(), name="calc_create_view"),
-    url(r'^calcs/$', CalcView.as_view(), name="calc_view"),
+    url(r'^$', OperationCreateView.as_view(), name="operation_create_view"),
+    url(r'^Operation/$', OperationView.as_view(), name="operation_view"),
     url(r'^profiles/(?P<pk>\d+)/$', ProfileDetailView.as_view(), name="profile_detail_view")
 ]

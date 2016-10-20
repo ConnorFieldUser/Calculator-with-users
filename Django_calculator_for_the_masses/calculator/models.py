@@ -16,7 +16,7 @@ POSSIBLE_OPS = [
 ]
 
 
-class Calc(models.Model):
+class Operation(models.Model):
     created_by = models.ForeignKey('auth.User')
     created = models.DateTimeField(auto_now_add=True)
     num1 = models.IntegerField()
