@@ -21,6 +21,7 @@
 
 
 <h1 style="color: green; text-align: center">Calculator</h1>
+
 <br><br><br>
 
         {% if not request.user.is_authenticated %}
@@ -28,9 +29,9 @@
           <a href="{% url 'login' %}"> Login </a>|</h1>
           {% else %}
           |<a href="{% url 'logout' %}?next={% url 'login' %}"> Logout </a>|
+          <a href="{% url 'profile_detail_view' request.user.id %}"> ProfileView </a>|
+
           {% endif %}
-
-
 
 
     {% block content %}

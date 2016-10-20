@@ -1,10 +1,10 @@
 # from django.shortcuts import render
 
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, DetailView
 
 from django.views.generic.edit import CreateView
 
-from calculator.models import Calc
+from calculator.models import Calc, Profile
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -21,8 +21,8 @@ class CalcView(ListView):
     model = Calc
 
 
-class ProfileView(TemplateView):
-    template_name = 'profile.html'
+class ProfileDetailView(DetailView):
+    model = Profile
 
 
 class UserCreateView(CreateView):
@@ -40,3 +40,8 @@ class CalcCreateView(CreateView):
         instance = form.save(commit=False)
         instance.created_by = self.request.user
         return super().form_valid(form)
+
+# def get_context_data(self):
+#     context = super().get_context_data()
+#     context["object_list"] = Special.objects.all()
+#     return context
