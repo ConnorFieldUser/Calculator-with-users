@@ -17,7 +17,7 @@ class IndexView(TemplateView):
 
 
 class CalcView(ListView):
-    template_name = "index.html"
+    template_name = 'calcs.html'
     model = Calc
 
 

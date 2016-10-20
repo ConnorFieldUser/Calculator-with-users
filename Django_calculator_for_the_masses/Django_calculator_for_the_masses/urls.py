@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from calculator.views import UserCreateView, CalcCreateView
+# Why don't you like the imports lined up?
+from calculator.views import UserCreateView, CalcView, CalcCreateView, ProfileView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
-    url(r'^$', CalcCreateView.as_view(), name="calc_create_view")
+    url(r'^$', CalcCreateView.as_view(), name="calc_create_view"),
+    url(r'^calcs/$', CalcView.as_view(), name="calc_view"),
+    url(r'^profile/$', ProfileView.as_view(), name="profile_view")
 ]
