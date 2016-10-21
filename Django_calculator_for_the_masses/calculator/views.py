@@ -2,7 +2,7 @@
 
 from django.views.generic import ListView, TemplateView, DetailView
 
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from calculator.models import Operation, Profile
 
@@ -23,6 +23,18 @@ class OperationView(ListView):
 
 class ProfileDetailView(DetailView):
     model = Profile
+
+
+class ProfileUpdateView(UpdateView):
+    template_name = 'profile.html'
+    fields = ("access_level",)
+    success_url = "/"  # reverse_lazy('profile_view')
+
+    def get_object(self):
+        return Profile.objects.get(user=self.request.user)
+
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
 
 
 class UserCreateView(CreateView):
