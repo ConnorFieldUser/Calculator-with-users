@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+rrr
+{{ profile.user }}
 
-
-{% for profile in profiles %}
+{% for profile in object_list %}
   <div class="panel panel-default">
     <div class="panel-heading">
-  <h3 class="panel-title">{{ object.user }}{{ profile.access_level }}</h3>
+  <h3 class="panel-title">{{ profile.user }}{{ profile.access_level }}</h3>
 </div>
   <div class="panel-body">
     <a href="#"> {{ calc.operator }}</a>
