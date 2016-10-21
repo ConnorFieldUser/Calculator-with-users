@@ -35,7 +35,9 @@
           {% else %}
             <a style="tex-align: left;" href="{% url 'operation_create_view' %}"> Home </a>
           |<a href="{% url 'logout' %}?next={% url 'login' %}"> Logout </a>|
-          <a href="{% url 'profile_view' %}"> Profile </a>|
+          <a href="{% url 'profile_view' %}"> Settings </a>|
+          <a href="{% url 'operation' %}">Archives</a>
+
 
           {% endif %}
 

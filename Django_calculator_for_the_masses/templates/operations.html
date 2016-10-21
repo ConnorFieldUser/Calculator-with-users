@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-{% for operation in object_list %}
       {% if request.user.profile.is_owner %}
+{% for operation in object_list %}
+
   <div class="panel panel-default">
     <div class="panel-heading">
 
@@ -18,7 +18,14 @@
 
   </div>
     </div>
-    {% else %}
+          {% endfor %}
+        {% endif %}
+
+
+
+{% for operation in object_list %}
+    {% if request.user == operation.created_by %}
+
     <div class="panel panel-default">
       <div class="panel-heading">
 
@@ -33,13 +40,9 @@
 
     </div>
       </div>
-    {% endif %}
 
-    {% endfor %}
+{% endif %}
 
-
-
-
-
+{% endfor %}
 
 {% endblock %}
