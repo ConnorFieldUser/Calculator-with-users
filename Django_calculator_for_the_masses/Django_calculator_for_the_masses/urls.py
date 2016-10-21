@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
     url(r'^$', OperationCreateView.as_view(), name="operation_create_view"),
-    url(r'^Operation/$', OperationView.as_view(), name="operation_view"),
+    url(r'^operation/$', OperationView.as_view(), name="operation_view"),
     url(r'accounts/profile/$', ProfileUpdateView.as_view(), name="profile_view"),
     url(r'^profiles/(?P<pk>\d+)/$', ProfileDetailView.as_view(), name="profile_detail_view")
 ]

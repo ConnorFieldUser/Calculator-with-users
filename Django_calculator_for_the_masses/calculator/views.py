@@ -46,11 +46,12 @@ class UserCreateView(CreateView):
 class OperationCreateView(CreateView):
     model = Operation
     success_url = "/"
-    fields = ("num1", "num2", "operator", "description")
+    fields = ("num1", "operator", "num2")
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.created_by = self.request.user
+        instance.result = Operation.do_the_math
         return super().form_valid(form)
 
 # def get_context_data(self):

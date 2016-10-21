@@ -9,6 +9,9 @@
       body {
         background-color: lightgrey; font-family:sans-serif;
         }
+      a {
+        text-decoration: underline;
+      }
     </style>
   </head>
 
@@ -24,10 +27,13 @@
 
 <br><br><br>
 
+
         {% if not request.user.is_authenticated %}
+
         <h1>|<a href="{% url 'user_create_view' %}"> Create User </a>|
           <a href="{% url 'login' %}"> Login </a>|</h1>
           {% else %}
+            <a style="tex-align: left;" href="{% url 'operation_create_view' %}"> Home </a>
           |<a href="{% url 'logout' %}?next={% url 'login' %}"> Logout </a>|
           <a href="{% url 'profile_view' %}"> Profile </a>|
 

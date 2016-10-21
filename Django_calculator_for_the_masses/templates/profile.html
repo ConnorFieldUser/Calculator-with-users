@@ -1,31 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-rrr
-{{ profile.user }}
 
-{% for profile in object_list %}
+
+
+
   <div class="panel panel-default">
     <div class="panel-heading">
-  <h3 class="panel-title">{{ profile.user }}{{ profile.access_level }}</h3>
+  <h3 class="panel-title">{{ profile.user }}</h3>
 </div>
-  <div class="panel-body">
-    <a href="#"> {{ calc.operator }}</a>
-    <p style="color: orange">
-      By: {{ calc.num2 }}
-    </p>
+  <div class="panel-body" style="color: green">ACCESS LEVEL: {{ profile.access_level }}
   </div>
     </div>
 
 
 
-  <form class="" action="" method="post">
-  {% csrf_token %}
-     {{ form.as_p }}
-     <input type="submit"  value="nutten">
-  </form>
 
 
+      <form class="" action="" method="post">
+      {% csrf_token %}
+         {{ form.as_p }}
+         <input type="submit"  value="Submit">
+      </form>
 
-    {% endfor %}
 
 {% endblock %}

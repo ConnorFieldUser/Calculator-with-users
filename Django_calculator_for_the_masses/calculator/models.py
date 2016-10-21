@@ -23,6 +23,7 @@ class Operation(models.Model):
     num2 = models.IntegerField()
     operator = models.CharField(max_length=1)
     description = models.TextField(null=True, blank=True)
+    result = models.IntegerField()
 
     @property
     def do_the_math(self):
