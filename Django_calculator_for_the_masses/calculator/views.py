@@ -51,7 +51,6 @@ class OperationCreateView(CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.created_by = self.request.user
-        instance.result = Operation.do_the_math
         return super().form_valid(form)
 
 # def get_context_data(self):

@@ -1,25 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
 {% for operation in object_list %}
+      {% if request.user.profile.is_owner %}
   <div class="panel panel-default">
     <div class="panel-heading">
+
   <h3 class="panel-title">{% if operation.description %}
-    Reason for operation:<br>{{ operation.description }}</h3>
-    {% endif %}
+    Reason for operation:<br>{{ operation.description }}</h3>{% endif %}
 </div>
   <div class="panel-body">
     <p>{{ operation.num1 }} {{ operation.operator }}  {{ operation.num2 }} = {{ operation.do_the_math }}</p>
     <p style="color: orange"><br>
       By: {{ operation.created_by }}
     </p>
-    <p>
 
-    </p>
   </div>
     </div>
+    {% else %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+
+    <h3 class="panel-title">{% if operation.description %}
+      Reason for operation:<br>{{ operation.description }}</h3>{% endif %}
+  </div>
+    <div class="panel-body">
+      <p>{{ operation.num1 }} {{ operation.operator }}  {{ operation.num2 }} = {{ operation.do_the_math }}</p>
+      <p style="color: orange"><br>
+        By: {{ operation.created_by }}
+      </p>
+
+    </div>
+      </div>
+    {% endif %}
 
     {% endfor %}
+
+
+
+
 
 
 {% endblock %}

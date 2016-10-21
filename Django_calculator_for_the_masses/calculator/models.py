@@ -21,9 +21,8 @@ class Operation(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     num1 = models.IntegerField()
     num2 = models.IntegerField()
-    operator = models.CharField(max_length=1)
+    operator = models.CharField(max_length=1, choices=POSSIBLE_OPS)
     description = models.TextField(null=True, blank=True)
-    result = models.IntegerField()
 
     @property
     def do_the_math(self):
