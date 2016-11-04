@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-# Why don't you like the imports lined up?
 from calculator.views import UserCreateView, OperationView, OperationCreateView, ProfileDetailView, \
                              ProfileUpdateView
 
